@@ -19,6 +19,7 @@ class SimpleTextDB
 	protected $_where = array();
 	protected $_limit;
 	protected $_offset = 0;
+	protected $_order;
 
 	public function __construct($file)
 	{
@@ -69,7 +70,27 @@ class SimpleTextDB
 		$match = $add = 0;
 		$hasFilter = ($filter !== null || $this->_where);
 
+		//数据顺序排序，仅针对插入顺序
+		if ($this->_order == SORT_DESC) {
+			$table['data'] = array_reverse($table['data']);
+		}
+
+		//$i = $this->_order == SORT_DESC ? count($table['data']) : 0;
+
 		foreach ($table['data'] as $row) {
+		//while (true) {
+		//	if ($this->_order == SORT_DESC) {
+		//		--$i;
+		//	} else {
+		//		++$i;
+		//	}
+		//
+		//	if (!isset($table['data'][$i])) {
+		//		break;
+		//	}
+		//
+		//	$row = $table['data'][$i];
+
 			if ($hasFilter) {
 				$row = $this->parseRow($row, $table['keys']);
 				if ($this->filter($row, $filter)) {
@@ -190,10 +211,16 @@ class SimpleTextDB
 		return $this;
 	}
 
+	public function order($order=SORT_ASC)
+	{
+		$this->_order = $order;
+		return $this;
+	}
+
 	protected function clearCondition()
 	{
 		$this->_where = array();
-		$this->_limit = null;
+		$this->_limit = $this->_order = null;
 		$this->_offset = 0;
 	}
 
