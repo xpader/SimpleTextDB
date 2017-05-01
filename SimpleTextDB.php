@@ -255,6 +255,7 @@ class SimpleTextDB
 	{
 		$table = $this->readTableWithData();
 		$count = 0;
+		$hasFilter = ($filter !== null || $this->_where);
 
 		foreach ($table['data'] as $i => $row) {
 			$row = $this->parseRow($row, $table['keys']);
