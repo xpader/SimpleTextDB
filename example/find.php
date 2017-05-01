@@ -12,9 +12,11 @@ $db = new SimpleTextDB('data.txt');
 
 //$row = $db->where(array('id'=>142))->findOne();
 
-$row = $db->findAll(function($row) {
-	return $row['username'] == 'Pader';
-});
+//$row = $db->findAll(function($row) {
+//	return $row['username'] == 'Pader';
+//});
+
+$row = $db->where(array('id >='=>111))->findAll();
 
 //$row = $db->findAll();
 

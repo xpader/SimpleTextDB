@@ -127,8 +127,10 @@ class SimpleTextDB
 						$is = is_array($v) ? in_array($row[$k], $v) : strcasecmp($v, $row[$k]) == 0;
 						$symbol == '!=' && $is = !$is;
 						break;
-					case '>': $is = $v > $row[$k]; break; //大于
-					case '<': $is = $v < $row[$k]; break; //小于
+					case '>': $is = $row[$k] > $v; break; //大于
+					case '>=': $is = $row[$k] >= $v; break;
+					case '<': $is = $row[$k] < $v; break; //小于
+					case '<=': $is = $row[$k] <= $v; break;
 					case '%': //模糊匹配
 					case '!%': //模糊非匹配
 						$is = stripos($row[$k], $v) !== false;
