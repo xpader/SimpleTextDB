@@ -14,7 +14,7 @@ class SimpleTextDB
 {
 
 	protected $file;
-	protected $delimiter = '||';
+	protected $delimiter = "\x1F"; //记录分割符
 
 	protected $_where = array();
 	protected $_limit;
@@ -27,7 +27,6 @@ class SimpleTextDB
 			trigger_error("指定的数据文件不存在：$file", E_USER_ERROR);
 		}
 
-		$this->delimiter = chr(31); //记录分割符
 		$this->file = $file;
 	}
 
