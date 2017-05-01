@@ -1,5 +1,5 @@
-SimpleTextDb|1|id,username,password,login_ip|id|257
-100Pader
+SimpleTextDB|1|id,username,password,login_ip|id|257
+100Pader3efbe80028805d36541e9455f1468d0059075de09d8a2
 102test18b1a9953c4611296a827abf8c47804d7
 103test8b1a9953c4611296a827abf8c47804d7123.456.789.111
 104test14936489283fe5627dbf144b82fa0fe2c31405e0a365522088
@@ -9,7 +9,7 @@ SimpleTextDb|1|id,username,password,login_ip|id|257
 108test1493648940c23d52bf32649ba54b6ed6c73448e10057771796
 109test1493648940c23d52bf32649ba54b6ed6c73448e10021568809
 110test1493648940c23d52bf32649ba54b6ed6c73448e10090533359
-111test1493648941c6e4d0172a898c2b5fcdc603ab719afc22140342
+111test1493648941test122140342
 112test1493648941c6e4d0172a898c2b5fcdc603ab719afc76105281
 113test1493648941c6e4d0172a898c2b5fcdc603ab719afc63103797
 114test1493648941c6e4d0172a898c2b5fcdc603ab719afc92829411
@@ -23,7 +23,7 @@ SimpleTextDb|1|id,username,password,login_ip|id|257
 122test1493648943b4297906f2354d24ed4cbb4546c60d0137456641
 123test1493648943b4297906f2354d24ed4cbb4546c60d0182179118
 1245907464b6ac62023733b60262d3fe8cf77fe16165512796456698
-1255907464bbad0b023733b60262d3fe8cf77fe16165512744625238
+1255907464bbad0bforeach ($table['data'] as $i => $row) {\\n				if ($filter !== null) {\\n					$row = $this->parseRow($row, $table['keys']);\\n					if ($filter($row)) {\\n						unset($table['data'][$i]);\\n						++$count;\\n					}\\n				} else {\\n					unset($table['data'][$i]);\\n					++$count;\\n				}\\n\\n				if ($limit > 0 && $count == $limit) {\\n					break;\\n				}\\n			}44625238
 1265907464c0a5409d5aaeb9d398a3a763eaa947195d216c78966448
 1275907464c46d4a9d5aaeb9d398a3a763eaa947195d216c95467380
 1285907464c7b1269d5aaeb9d398a3a763eaa947195d216c50031865
@@ -40,7 +40,7 @@ SimpleTextDb|1|id,username,password,login_ip|id|257
 139590746549b0a079167717d042eff817d031bf5f16901c48437191
 140590746551263d1ecf3d421513e3b739b633989c1b09a365439220
 1415907465595f181ecf3d421513e3b739b633989c1b09a317750468
-142590746560833e1afec2fb067ac1f0ecd424d65268cf5435995842
+142590746560833e伴随着创作者更新（包括移动和PC）的正式发布，微软已经将更多的精力集中到Windows 10下个里程碑--RedStone 3的开发上。在最新发布的Build 16184版本中，带来了诸多Windows粉丝渴望看到的新功能。\\n\\n尽管开机初步体验并没有发生明显的改变，但当你深入探索之后就会注意到微软已经在不同的应用上测试不同的风格，类似于Groove或者Paint 3D的应用的应用程序已经支持“Project Neon”，可以看到这个磨砂玻璃，不同的应用会存在差异。35995842
 1435907465a23b08efdcad1decdae03095835ee4bf6110b470887130
 1445907465a7a491efdcad1decdae03095835ee4bf6110b446025056
 1455907465c6518655bf5d46f6d4b1b5ed4d45d8bcfc991b18647279

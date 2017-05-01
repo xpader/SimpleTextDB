@@ -10,11 +10,11 @@ $db = new SimpleTextDB('data.txt');
 //	'login_ip' => rand(10000000, 99999999)
 //));
 
-$row = $db->where(['username %'=>'est'])->findAll();
+//$row = $db->where(array('id'=>142))->findOne();
 
-//$row = $db->findAll(function($row) {
-//	return $row['username'] == 'Pader';
-//});
+$row = $db->findAll(function($row) {
+	return $row['username'] == 'Pader';
+});
 
 //$row = $db->findAll();
 

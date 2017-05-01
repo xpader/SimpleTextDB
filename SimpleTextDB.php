@@ -206,13 +206,18 @@ class SimpleTextDB
 		$table = $this->readTableWithData();
 
 		//AutoId
-		if ($table['autoKey'] && !isset($data[$table['autoKey']])) {
-			$data[$table['autoKey']] = $table['autoId'];
-			++$table['autoId'];
+		if ($table['autoKey']) {
+			if (isset($data[$table['autoKey']])) {
+				if ($data[$table['autoKey']] >= $table['autoId']) {
+					$table['autoId'] = $data[$table['autoKey']] + 1;
+				}
+			} else {
+				$data[$table['autoKey']] = $table['autoId'];
+				++$table['autoId'];
+			}
 		}
 
 		$row = $this->joinRow($data, $table['keys']);
-
 		$table['data'][] = $row;
 
 		return $this->writeTable($table) ? ($table['autoKey'] ? $data[$table['autoKey']] : true) : false;
@@ -259,8 +264,8 @@ class SimpleTextDB
 
 		foreach ($table['data'] as $i => $row) {
 			$row = $this->parseRow($row, $table['keys']);
-			if ($filter !== null) {
-				if ($filter($row)) {
+			if ($hasFilter) {
+				if ($this->filter($row, $filter)) {
 					$table['data'][$i] = $this->joinRow($data + $row, $table['keys']);
 					++$count;
 				}
@@ -274,9 +279,10 @@ class SimpleTextDB
 			}
 		}
 
+		$this->clearCondition();
+
 		if ($count > 0) {
 			$this->writeTable($table);
-			print_r($table);
 		}
 
 		return $count;
@@ -293,16 +299,17 @@ class SimpleTextDB
 	{
 		$table = $this->readTableWithData();
 		$count = 0;
+		$hasFilter = ($filter !== null || $this->_where);
 
 		//清空表数据
-		if ($filter === null && $limit == 0) {
+		if (!$hasFilter) {
 			$count = count($table['data']);
 			$table['data'] = [];
 		} else {
 			foreach ($table['data'] as $i => $row) {
-				if ($filter !== null) {
+				if ($hasFilter) {
 					$row = $this->parseRow($row, $table['keys']);
-					if ($filter($row)) {
+					if ($this->filter($row, $filter)) {
 						unset($table['data'][$i]);
 						++$count;
 					}
@@ -385,7 +392,7 @@ class SimpleTextDB
 
 	protected static function makeHead($keys, $autoKey='', $autoId=0)
 	{
-		return 'SimpleTextDb|1|'.join(',', $keys).'|'.$autoKey.'|'.$autoId;
+		return 'SimpleTextDB|1|'.join(',', $keys).'|'.$autoKey.'|'.$autoId;
 	}
 
 	/**
