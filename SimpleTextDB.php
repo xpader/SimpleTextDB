@@ -102,7 +102,7 @@ class SimpleTextDB
 			}
 
 			//OFFSET
-			if ($this->_offset > 0 && $match < $this->_offset) {
+			if ($this->_offset > 0 && $match <= $this->_offset) {
 				continue;
 			}
 

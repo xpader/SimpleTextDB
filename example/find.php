@@ -16,7 +16,7 @@ $db = new SimpleTextDB('data.txt');
 //	return $row['username'] == 'Pader';
 //});
 
-$row = $db->where(array('id >='=>111, 'id <='=>250))->order(SORT_DESC)->limit(10)->findAll();
+$row = $db->where(array('id >='=>121, 'id <='=>145))->order(SORT_DESC)->limit(2, 20)->findAll();
 
 //$row = $db->findAll();
 
