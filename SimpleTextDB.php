@@ -121,6 +121,33 @@ class SimpleTextDB
 	}
 
 	/**
+	 * 统计指定数据记录数
+	 *
+	 * @param callable|null $filter
+	 * @return int
+	 */
+	public function count(callable $filter=null)
+	{
+		$table = $this->readTableWithData();
+		$hasFilter = ($filter !== null || $this->_where);
+
+		if (!$hasFilter) return count($table['data']);
+
+		$count = 0;
+
+		foreach ($table['data'] as $row) {
+			$row = $this->parseRow($row, $table['keys']);
+			if ($this->filter($row, $filter)) {
+				++$count;
+			}
+		}
+
+		$this->clearCondition();
+
+		return $count;
+	}
+
+	/**
 	 * 对数据进行条件过滤
 	 *
 	 * @param array $row
