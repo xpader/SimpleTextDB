@@ -9,14 +9,14 @@ Base on text file, implemented simple insert,delete,update,fetch functions to he
 
 ## 示例
 
-#####创建数据库
+##### 创建数据库
 创建指定名称的数据库文件
 ```php
-SimpleTextDB::createTable('data.txt', ['id', 'username', 'password', 'login_ip' ,'description'], 'id');
+$result = SimpleTextDB::createTable('data.txt', ['id', 'username', 'password', 'login_ip' ,'description'], 'id');
 ```
 第三个参数指定 id 字段为自增片段，如果没有则不指定。
 
-#####插入数据
+##### 插入数据
 ```php
 $db = new SimpleTextDB('data.txt');
 
@@ -28,20 +28,20 @@ $row = $db->insert(array(
 ```
 成功返回 true 或自增 ID，失败返回 false
 
-#####修改数据
+##### 修改数据
 ```php
 $row = $db->where(array('id'=>248))->update(array('username'=>'Hello','password' => 'NewPassword'), null, 1);
 ```
 修改 id=248 记录的内容
 
-#####删除数据
+##### 删除数据
 ```php
 $db = new SimpleTextDB('data.txt');
 
 $row = $db->where(array('id'=>112))->delete();
 ```
 
-#####查询数据
+##### 查询数据
 - where() 指定查询的条件，其中键为字段，值为对应的查询值，默认为等于查询 。
 - 如果使用其它查询，指定数组元素为 ['id >'=>123] 则代表大于查询
 - where() 第二个参数代表条件是否使用 OR （或）组成
@@ -66,4 +66,4 @@ $where 条件中的字段名可以指定的查询对比符号列表
 - % 模糊匹配
 - !% 模糊非匹配
  
-######更多功能和用法详见 SimpleTextDB.php 示例及源码。
+###### 更多功能和用法详见 SimpleTextDB.php 示例及源码。
