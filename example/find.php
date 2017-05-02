@@ -1,6 +1,6 @@
 <?php
 
-require '../SimpleTextDb.php';
+require '../SimpleTextDB.php';
 
 $db = new SimpleTextDB('data.txt');
 
@@ -17,6 +17,8 @@ $db = new SimpleTextDB('data.txt');
 //});
 
 $row = $db->where(array('id >='=>121, 'id <='=>145))->order(SORT_DESC)->limit(2, 20)->findAll();
+
+//$row = $db->where(array('id >='=>121, 'id <='=>145))->count();
 
 //$row = $db->order(SORT_DESC)->limit(10)->findAll();
 

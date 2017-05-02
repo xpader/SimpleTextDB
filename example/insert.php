@@ -1,6 +1,6 @@
 <?php
 
-require '../SimpleTextDb.php';
+require '../SimpleTextDB.php';
 
 $db = new SimpleTextDB('data.txt');
 

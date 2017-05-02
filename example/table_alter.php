@@ -1,6 +1,6 @@
 <?php
 
-require '../SimpleTextDb.php';
+require '../SimpleTextDB.php';
 
 SimpleTextDB::createTable('table2.txt', ['id', 'username', 'password', 'login_ip' ,'description'], 'id');
 
