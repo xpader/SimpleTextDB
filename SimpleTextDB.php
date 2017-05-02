@@ -263,7 +263,11 @@ class SimpleTextDB
 
 		foreach ($batchData as $data) {
 			//AutoId
-			if ($table['autoKey'] && !isset($data[$table['autoKey']])) {
+			if (isset($data[$table['autoKey']])) {
+				if ($data[$table['autoKey']] >= $table['autoId']) {
+					$table['autoId'] = $data[$table['autoKey']] + 1;
+				}
+			} else {
 				$data[$table['autoKey']] = $table['autoId'];
 				++$table['autoId'];
 			}

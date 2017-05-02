@@ -18,7 +18,7 @@ $db = new SimpleTextDB('data.txt');
 
 $row = $db->where(array('id >='=>121, 'id <='=>145))->order(SORT_DESC)->limit(2, 20)->findAll();
 
-//$row = $db->findAll();
+//$row = $db->order(SORT_DESC)->limit(10)->findAll();
 
 //$row = $db->update(array(
 //	'username' => 'test1'
