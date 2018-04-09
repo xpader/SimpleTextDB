@@ -215,7 +215,7 @@ class SimpleTextDB
 
 	public function where($condition, $or=false)
 	{
-		if (!$condition) $this;
+		if (!$condition) return $this;
 		$this->_where = [$or, $condition];
 		return $this;
 	}
