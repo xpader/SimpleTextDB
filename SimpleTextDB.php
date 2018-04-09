@@ -42,6 +42,11 @@ class SimpleTextDB
 		$result = null;
 		$noFilter = ($filter === null && !$this->_where);
 
+		//数据顺序排序，仅针对插入顺序
+		if ($this->_order == SORT_DESC) {
+			$table['data'] = array_reverse($table['data']);
+		}
+
 		foreach ($table['data'] as $row) {
 			$row = $this->parseRow($row, $table['keys']);
 
